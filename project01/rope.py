@@ -1,8 +1,11 @@
 from balanced_binaryTree import *
 
 class Rope:
-    def __init__(self):
+    def __init__(self, string=""):
         self.tree = BalBTree()
+        self.SIZE_FRAG = 5
+        #for i in len(string):
+        #    self.concat(, s2)
     
     def weight(self, root):
         if root == None:
@@ -19,22 +22,49 @@ class Rope:
             else:
                 return root.data[i]
     
-    def
+    def concat(self, s1, s2):
+        rope = Rope()
+        tree = rope.tree
+        root = tree.root
+        tree1 = s1.tree
+        root1 = tree1.root
+        tree2 = s2.tree
+        root2 = tree2.root
+        
+        root.left = root1
+        root.right = root2
+        root1.parent = root
+        root2.parent = root
+        return rope
 
 
 if __name__ == "__main__":
-    Lasso = Rope()
-    tree = Lasso.tree   
-    root = tree.addNode()
-    tree.insert(root) #1
-    tree.insert(root) #2
-    tree.insert(root) #3
-    tree.insert(root) #4
-    tree.insert(root, "hello")
-    tree.insert(root, "there")
-    tree.insert(root, "friend")
-    tree.printTree(root)
+    R1 = Rope()
+    tree1 = R1.tree   
+    root1 = tree1.root
+    tree1.insert(root1, "hello")
+    tree1.insert(root1, "there")
+    tree1.printTree(root1)
     print
-    print Lasso.weight(root)
+
+    R2 = Rope()
+    tree2 = R2.tree
+    root2 = tree2.addNode()
+    tree2.insert(root2, "every")
+    tree2.insert(root2, "one")
+    tree2.printTree(root2)
     print
-    print Lasso.index(root, 3)
+    
+    new = R1.concat(R1, R2)
+    ntree = new.tree
+    nroot = ntree.root
+    
+    print "Here: "
+    ntree.printTree(nroot)
+    print
+    
+    """
+    print new.weight(root1)
+    print
+    print new.index(root1, 3)
+    """

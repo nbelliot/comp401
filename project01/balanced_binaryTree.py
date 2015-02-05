@@ -20,7 +20,7 @@ class Node:
 
 class BalBTree:
     def __init__(self):
-        self.root = None
+        self.root = self.addNode()
     
     
     def addNode(self, data=""):
@@ -95,12 +95,12 @@ class BalBTree:
                 print root.data,
             self.printRevTree(root.left)
 
-"""            
+            
 if __name__ == "__main__":
     # create the binary tree
     BTree = BalBTree()
     # add the root node
-    root = BTree.addNode(10)
+    root = BTree.root
     # ask the user to insert values
     for i in range(0, 5):
         data = int(raw_input("insert the node value nr %d: " % i))
@@ -114,5 +114,4 @@ if __name__ == "__main__":
     print
         
     print BTree.maxDepth(root)
-    print BTree.mazSize(root)
-"""
+    print BTree.maxSize(root)
