@@ -4,9 +4,23 @@ class Rope:
     def __init__(self, string=""):
         self.tree = BalBTree()
         self.SIZE_FRAG = 5
-        #for i in len(string):
-        #    self.concat(, s2)
-    
+        i = 0
+        while i < len(string):
+            if len(string) - i < self.SIZE_FRAG:
+                if self.tree.root.left == None or self.tree.root.right == None:
+                    self.tree.insert(self.tree.root, string[i:i+(len(string))])
+                else:
+                    self.concat(Rope(string[i:i+(len(string))]))
+            else:
+                if self.tree.root.left == None or self.tree.root.right == None:
+                    self.tree.insert(self.tree.root, string[i:i+self.SIZE_FRAG])
+                else:
+                    self.concat(Rope(string[i:i+(len(string)-1)]))
+            i += self.SIZE_FRAG
+        
+    #def feed(self, string):
+
+            
     def weight(self, root):
         if root == None:
             return 0
@@ -21,50 +35,76 @@ class Rope:
                 return self.index(root.left, i)
             else:
                 return root.data[i]
+            
+    def find(self, root, i):
+        if self.weight(root) < i:
+            return self.find(root.right, i - self.weight(root))
+        else:
+            if root.left != None:
+                return self.find(root.left, i)
+            else:
+                return root, i
     
-    def concat(self, s1, s2):
-        rope = Rope()
-        tree = rope.tree
-        root = tree.root
-        tree1 = s1.tree
+    def concat(self, S):
+        root = self.tree.addNode()
+        tree1 = self.tree
         root1 = tree1.root
-        tree2 = s2.tree
+        tree2 = S.tree
         root2 = tree2.root
         
         root.left = root1
         root.right = root2
         root1.parent = root
         root2.parent = root
-        return rope
+        self.tree.root = root
+
+    #def split(self, i):
+        #
+        #if i < weight 
+        """
+        tree = self.tree
+        node, index = self.find(tree.root, i)
+        if index != 0:
+            root = tree.addNode()
+            root.left = tree.addNode(node.data[0:index])
+            root.right = tree.addNode(node.data[index:len(node.data)+1])
+            parent = node.parent
+            if parent.left == node:
+                parent.left = root
+            else:
+                parent.right = root
+                
+                """
+        def insert(self, i, S):
+            node, index = self.find(self.tree.root, i)
+            root = tree.addNode()
+            root.left = node
+            node.parent = root
+            root.right = S.root
+            S.root.parent = root        
 
 
 if __name__ == "__main__":
-    R1 = Rope()
-    tree1 = R1.tree   
-    root1 = tree1.root
-    tree1.insert(root1, "hello")
-    tree1.insert(root1, "there")
-    tree1.printTree(root1)
+    R1 = Rope("Hello there")
+    R1.tree.printTree(R1.tree.root)
     print
 
-    R2 = Rope()
-    tree2 = R2.tree
-    root2 = tree2.addNode()
-    tree2.insert(root2, "every")
-    tree2.insert(root2, "one")
-    tree2.printTree(root2)
+    R2 = Rope("every one.")
+    R2.tree.printTree(R2.tree.root)
     print
     
-    new = R1.concat(R1, R2)
-    ntree = new.tree
-    nroot = ntree.root
+    R1.concat(R2)
     
     print "Here: "
-    ntree.printTree(nroot)
+    R1.tree.printTree(R1.tree.root)
     print
     
-    """
-    print new.weight(root1)
+    #print R1.split(3)
+    
+    R3 = Rope("123456789098")
+    R3.tree.printTree(R3.tree.root)
+    
+    print R1.weight(R1.tree.root)
     print
-    print new.index(root1, 3)
-    """
+    print R1.index(R1.tree.root, 3)
+    
