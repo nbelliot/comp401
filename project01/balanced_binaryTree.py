@@ -4,7 +4,6 @@ class Node:
         self.right = None
         self.parent = None
         self.data = data
-        #self.height = 0
 
 
 class BalBTree:
@@ -16,55 +15,49 @@ class BalBTree:
         return Node(data)
 
 
-    def insert(self, root, data=""):
-        if root.left == None:
-            root.left = self.addNode(data)
-            root.left.parent = root
-            self.determine_height(root.left)
-        elif root.right == None:
-            root.right = self.addNode(data)
-            root.right.parent = root
-            self.determine_height(root.right)
-        elif self.size(root.left) > self.size(root.right):
-            size = self.size(root.left)
-            maxsize = self.maxSize(root.left)
+    def insert(self, node, data=""):
+        if node.left == None:
+            node.left = self.addNode(data)
+            node.left.parent = node
+        elif node.right == None:
+            node.right = self.addNode(data)
+            node.right.parent = node
+        elif self.size(node.left) > self.size(node.right):
+            size = self.size(node.left)
+            maxsize = self.maxSize(node.left)
             if (size == maxsize):
-                self.insert(root.right, data)
-                root.right.parent = root
-                self.determine_height(root.right)
+                self.insert(node.right, data)
+                node.right.parent = node
             else:
-                self.insert(root.left, data)
-                root.left.parent = root
-                self.determine_height(root.left)
+                self.insert(node.left, data)
+                node.left.parent = node
         else:
-            self.insert(root.left, data)
-            root.left.parent = root
-            self.determine_height(root.left)
+            self.insert(node.left, data)
+            node.left.parent = node
         
-        self.determine_height(self.root)
-        self.balance()
+        self.balance(self.root)
         
 
-    def maxDepth(self, root):
-        if root == None:
+    def maxDepth(self, node):
+        if node == None:
             return 0
         else:
-            ldepth = self.maxDepth(root.left)
-            rdepth = self.maxDepth(root.right)
+            ldepth = self.maxDepth(node.left)
+            rdepth = self.maxDepth(node.right)
             return max(ldepth, rdepth) + 1
             
             
-    def size(self, root):
-        if root == None:
+    def size(self, node):
+        if node == None:
             return 0
         else:
-            return self.size(root.left) + 1 + self.size(root.right)
+            return self.size(node.left) + 1 + self.size(node.right)
         
         
-    def maxSize(self, root):
-        height = self.maxDepth(root)
+    def maxSize(self, node):
+        height = self.maxDepth(node)
         total = 0
-        if root == None:
+        if node == None:
             return 0
         else:
             for i in range(0,height):
@@ -89,9 +82,6 @@ class BalBTree:
         node.right = _rl
         _r.left = node
         
-        self.determine_height(node)
-        self.determine_height(_r)
-        
         return _r
   
     def move_right(self, node):
@@ -101,9 +91,6 @@ class BalBTree:
         node.left = _lr
         _l.right = node
         
-        self.determine_height(node)
-        self.determine_height(_l)
-        
         return _l
 
     def rotate_left(self, node):
@@ -112,7 +99,7 @@ class BalBTree:
         _lH = self.determine_height(_r) if _r.left != None else 0
         _rH = self.determine_height(_r) if _r.right != None else 0
         
-        if _lH > _rH: node.right = _r.move_right()
+        if _lH > _rH: node.right = self.move_right(_r)
         
         return self.move_left(node)
 
@@ -122,12 +109,13 @@ class BalBTree:
         _lH = self.determine_height(_l) if _l.left != None else 0
         _rH = self.determine_height(_l) if _l.right != None else 0
         
-        if _rH > _lH: node.left = _l.move_left()
+        if _rH > _lH: node.left = self.move_left(_l)
         
         return self.move_right(node)
+    
 
-    def balance(self):
-        root = self.root
+    def balance(self, node):
+        root = node
         if root.left == None and root.right == None: return root
        
         _lH = self.determine_height(root.left) if root.left != None else 0
@@ -138,46 +126,50 @@ class BalBTree:
         elif _rH + 1 < _lH:
             return self.rotate_right(root)
        
-        self.determine_height(root)
         return root
+    
+    def bottom(self, node):
+        if self.left == None and self.right == None: return node
+        
+        _lH = self.determine_height(node.left) if node.left != None else 0
+        _rH = self.determine_height(node.right) if node.right != None else 0
+        
+        if _lH > _rH + 1:
+            self.bottom(node.left)
+        elif _rH + 1 > _lH + 1:
+            self.bottom(node.right)
+        else:
+            return node        
           
 
-    def printTree(self, root):
-        if root == None:
+    def printTree(self, node):
+        if node == None:
             pass   
         else:
-            self.printTree(root.left)
-            if root.data != "":
-                print root.data,
-            self.printTree(root.right)
+            self.printTree(node.left)
+            if node.data != "":
+                print node.data,
+            self.printTree(node.right)
 
 
-    def printRevTree(self, root):
-        if root == None:
+    def printRevTree(self, node):
+        if node == None:
             pass
         else:
-            self.printRevTree(root.right)
-            if root.data != "":
-                print root.data,
-            self.printRevTree(root.left)
+            self.printRevTree(node.right)
+            if node.data != "":
+                print node.data,
+            self.printRevTree(node.left)
 
             
 if __name__ == "__main__":
-    # create the binary tree
-    BTree = BalBTree()
-    # add the root node
-    root = BTree.root
-    # ask the user to insert values
-    for i in range(0, 5):
-        data = int(raw_input("insert the node value nr %d: " % i))
-        # insert values
-        BTree.insert(root, data)
+    B = BalBTree()
+    B.insert(B.root, 1)
+    B.insert(B.root, 2)
+    B.insert(B.root, 3)
+    B.insert(B.root, 4)
+    B.root.left.left.left = B.addNode(5)
+    B.printTree(B.root)
+    B.balance(B.root)
     print
-    
-    BTree.printTree(root)
-    print
-    BTree.printRevTree(root)
-    print
-        
-    print BTree.maxDepth(root)
-    print BTree.maxSize(root)
+    B.printTree(B.root)
