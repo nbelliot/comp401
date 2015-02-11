@@ -19,13 +19,22 @@ class Rope:
                 self.feed(string[self.SIZE_FRAG:len(string)])
             else:
                 self.concat(Rope(string))
-
+                
+                
+    def insert(self, i, S):
+        node, index = self.find(self.tree.root, i)
+        root = tree.addNode()
+        root.left = node
+        node.parent = root
+        root.right = S.root
+        S.root.parent = root
+        
             
     def weight(self, root):
         if root == None:
             return 0
         else:
-            return self.weight(root.left) + len(root.data) +self.weight(root.right)
+            return self.weight(root.left) + len(root.data) + self.weight(root.right)
         
         
     def index(self, root, i):
@@ -49,22 +58,24 @@ class Rope:
     
     
     def cut(self, root, i, R):
-        if self.weight(root) <= i:
-            if 
+        weight = self.weight(root)
+        if weight <= i:
             return self.cut(root.right, i - self.weight(root), R)
         else:
             if root.left != None:
-                if (R.tree.root.left or R.tree.root.right) == None:
-                    R.tree.root = root.right
-                    #R.tree.root.left.parent = None
-                    root.right = None
+                if R.tree.root == None:
+                    if root.right != None:
+                        R.tree.root = root.right
+                        #R.tree.root.left.parent = None
+                        root.right = None
                     return self.cut(root.left, i, R)
                 else:
-                    S = Rope()
-                    S.tree.root = root.right
-                    #S.tree.root.parent = None
-                    root.right = None
-                    S.concat(R)
+                    if root.right != None:
+                        S = Rope()
+                        S.tree.root = root.right
+                        #S.tree.root.parent = None
+                        root.right = None
+                        S.concat(R)
                     return self.cut(root.left, i, S)
             else:
                 return R
@@ -82,7 +93,6 @@ class Rope:
         root2.parent = root
         self.tree.root = root
         
-        self.tree.determine_height(root)
         self.tree.balance()
 
     def split(self, i):
@@ -91,22 +101,16 @@ class Rope:
         if index != 0:
             root = tree.addNode()
             root.left = tree.addNode(node.data[0:index])
-            root.right = tree.addNode(node.data[index:len(node.data)+1])
+            root.right = tree.addNode(node.data[index:len(node.data)])
             parent = node.parent
             if parent.left == node:
                 parent.left = root
             else:
                 parent.right = root
             self.tree.balance()
-        return self.cut(tree.root, i, Rope())
-    
-    def insert(self, i, S):
-        node, index = self.find(self.tree.root, i)
-        root = tree.addNode()
-        root.left = node
-        node.parent = root
-        root.right = S.root
-        S.root.parent = root
+        R = Rope()
+        R.tree.root = None
+        return self.cut(tree.root, i, R)
 
 
 if __name__ == "__main__":
@@ -136,7 +140,7 @@ if __name__ == "__main__":
     print R1.index(R1.tree.root, 3)
     print
     
-    R4 = R1.split(3)
+    R4 = R2.split(3)
     
     R1.tree.printTree(R1.tree.root)
     print
