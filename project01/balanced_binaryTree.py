@@ -35,7 +35,7 @@ class BalBTree:
             self.insert(node.left, data)
             node.left.parent = node
         
-        self.balance(self.root)
+        self.balance()
         
 
     def maxDepth(self, node):
@@ -79,18 +79,22 @@ class BalBTree:
         _r = node.right
         _rl = _r.left
         
-        node.right = _rl
         _r.left = node
-        
+        node.right = _rl
+        if node == self.root:
+            self.root = _r        
+                
         return _r
   
     def move_right(self, node):
         _l = node.left
         _lr = _l.right
         
-        node.left = _lr
         _l.right = node
-        
+        node.left = _lr
+        if node == self.root:
+            self.root = _l
+                
         return _l
 
     def rotate_left(self, node):
@@ -114,8 +118,8 @@ class BalBTree:
         return self.move_right(node)
     
 
-    def balance(self, node):
-        root = node
+    def balance(self):
+        root = self.root
         if root.left == None and root.right == None: return root
        
         _lH = self.determine_height(root.left) if root.left != None else 0
@@ -126,20 +130,7 @@ class BalBTree:
         elif _rH + 1 < _lH:
             return self.rotate_right(root)
        
-        return root
-    
-    def bottom(self, node):
-        if self.left == None and self.right == None: return node
-        
-        _lH = self.determine_height(node.left) if node.left != None else 0
-        _rH = self.determine_height(node.right) if node.right != None else 0
-        
-        if _lH > _rH + 1:
-            self.bottom(node.left)
-        elif _rH + 1 > _lH + 1:
-            self.bottom(node.right)
-        else:
-            return node        
+        return root    
           
 
     def printTree(self, node):
@@ -168,8 +159,8 @@ if __name__ == "__main__":
     B.insert(B.root, 2)
     B.insert(B.root, 3)
     B.insert(B.root, 4)
-    B.root.left.left.left = B.addNode(5)
+    B.root.left.left.right = B.addNode(5)
     B.printTree(B.root)
-    B.balance(B.root)
+    B.balance()
     print
     B.printTree(B.root)

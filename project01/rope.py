@@ -50,18 +50,19 @@ class Rope:
     
     def cut(self, root, i, R):
         if self.weight(root) <= i:
+            if 
             return self.cut(root.right, i - self.weight(root), R)
         else:
             if root.left != None:
-                if (R.tree.root.left or R.tree.root.right == None):
+                if (R.tree.root.left or R.tree.root.right) == None:
                     R.tree.root = root.right
-                    R.tree.root.left.parent = None
+                    #R.tree.root.left.parent = None
                     root.right = None
                     return self.cut(root.left, i, R)
                 else:
                     S = Rope()
                     S.tree.root = root.right
-                    S.tree.root.parent = None
+                    #S.tree.root.parent = None
                     root.right = None
                     S.concat(R)
                     return self.cut(root.left, i, S)
@@ -82,7 +83,7 @@ class Rope:
         self.tree.root = root
         
         self.tree.determine_height(root)
-        #self.tree.balance()
+        self.tree.balance()
 
     def split(self, i):
         tree = self.tree
@@ -96,6 +97,7 @@ class Rope:
                 parent.left = root
             else:
                 parent.right = root
+            self.tree.balance()
         return self.cut(tree.root, i, Rope())
     
     def insert(self, i, S):
@@ -122,12 +124,10 @@ if __name__ == "__main__":
     R1.tree.printTree(R1.tree.root)
     print
     
-    #print R1.split(3)
     
-    R3 = Rope("Hello there my friends I love you so much")
+    R3 = Rope("Hello there my friends I love you so much.")
     R3.tree.printTree(R3.tree.root)
     print
-    R3.tree.balance()
     R3.tree.printTree(R3.tree.root)
     print
     
@@ -136,7 +136,7 @@ if __name__ == "__main__":
     print R1.index(R1.tree.root, 3)
     print
     
-    #R4 = R1.split(3)
+    R4 = R1.split(3)
     
     R1.tree.printTree(R1.tree.root)
     print
