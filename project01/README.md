@@ -10,9 +10,9 @@ A rope is a tree-like data structure that is meant to store a large string.  Whe
 - http://bitsavers.trailing-edge.com/pdf/xerox/parc/techReports/CSL-94-10_Ropes_Are_Better_Than_Strings.pdf
 
 ###### Documentation:
-Edit and run `driver.py` to load a rope with text.
-`rope.py` contains rope class - see for methods and comments.
-`balanced_binaryTree.py` contains tree helper class for `rope.py` - no need to see or manipulate.
+- Edit and run `driver.py` to load a rope with text.
+- `rope.py` contains rope class - see for methods and comments.
+- `balanced_binaryTree.py` contains tree helper class for `rope.py` - no need to see or manipulate.
 
 
 
