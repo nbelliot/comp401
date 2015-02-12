@@ -300,7 +300,7 @@ if __name__ == "__main__":
     print   
     
     print "R7: "
-    R7 = Rope("Hi there pal.")
+    R7 = Rope("Hi there best pal ever.")
     R7.report()
     print
     
