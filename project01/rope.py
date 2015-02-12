@@ -10,7 +10,7 @@ class Rope:
     """
     def __init__(self, string=""):
         self.tree = BalBTree()  #tree
-        self.SIZE_FRAG = 5      #max number of characters per string fragments
+        self.SIZE_FRAG = 10  #max number of characters per string fragments
         if string != "": self.feed(string)  #stores string (arg) in rope
             
         
@@ -308,4 +308,3 @@ if __name__ == "__main__":
     R7.delete(3,9)
     R7.report()
     print
-    
