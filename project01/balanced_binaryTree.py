@@ -80,7 +80,10 @@ class BalBTree:
         _rl = _r.left
         
         _r.left = node
+        node.parent = _r
         node.right = _rl
+        if _rl != None:
+            _rl.parent = node
         if node == self.root:
             self.root = _r        
                 
@@ -91,9 +94,13 @@ class BalBTree:
         _lr = _l.right
         
         _l.right = node
+        node.parent = _l
         node.left = _lr
+        if _lr != None:
+            _lr.parent = node
         if node == self.root:
             self.root = _l
+            
                 
         return _l
 
@@ -139,7 +146,7 @@ class BalBTree:
         else:
             self.printTree(node.left)
             if node.data != "":
-                print node.data,
+                print "|" + node.data + "|",
             self.printTree(node.right)
 
 
@@ -155,11 +162,11 @@ class BalBTree:
             
 if __name__ == "__main__":
     B = BalBTree()
-    B.insert(B.root, 1)
-    B.insert(B.root, 2)
-    B.insert(B.root, 3)
-    B.insert(B.root, 4)
-    B.root.left.left.right = B.addNode(5)
+    B.insert(B.root, "hi ")
+    B.insert(B.root, "there ")
+    B.insert(B.root, "my ")
+    B.insert(B.root, "friend ")
+    B.root.left.left.right = B.addNode("boo ")
     B.printTree(B.root)
     B.balance()
     print
