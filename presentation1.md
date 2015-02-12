@@ -12,4 +12,4 @@ Reading:
 - http://bitsavers.trailing-edge.com/pdf/xerox/parc/techReports/CSL-94-10_Ropes_Are_Better_Than_Strings.pdf
 
 Exercises:
-https://github.com/nbelliot/comp401/blob/project01/presentation1/Exercises.pdf
+https://github.com/nbelliot/comp401/blob/master/presentation1/Exercises.pdf
