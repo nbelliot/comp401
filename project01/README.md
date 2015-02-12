@@ -14,5 +14,14 @@ A rope is a tree-like data structure that is meant to store a large string.  Whe
 - `rope.py` contains rope class - see for methods and comments.
 - `balanced_binaryTree.py` contains tree helper class for `rope.py` - no need to see or manipulate.
 
-
+###### Complexity Analysis:
+Operation | Rope | String
+--------- | ---- | ------
+Build | O(n) | O(n)
+Iterate over e/ character | O(n) | O(n)
+Index | O(log n) | O(1)
+Concatenate | O(log n) | O(n)
+Split | O(log n) | O(1)
+Insert | O(log n) | O(n)
+Delete | O(log n) | O(n)
 
