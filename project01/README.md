@@ -1,5 +1,7 @@
 # project01 - "Rope" Data Structure
 
+![Rope](https://github.com/nbelliot/comp401/blob/master/presentation1/Rope.jpg)
+
 ###### Explanation:
 A rope is a tree-like data structure that is meant to store a large string.  When a large string is stored in a rope, the string is divided into smaller “fragment” strings and are stored at the lowest branches of the tree.  Storing a large string in this way makes storage and manipulation more efficient.
 
