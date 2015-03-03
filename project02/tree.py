@@ -34,40 +34,32 @@ class Tree:
         for node in nodes:
             node.parent = root        
     
-
-    def printTree(self, nodes):
-        if nodes == self.root:
-            print "|(" + str(nodes.data) + ", " + str(nodes.heuristic) + ")|"
-            self.printTree(nodes.children)
-            
-        else:
-            if len(nodes) == 0:
-                pass   
-            else:
-                print "|",
-                for node in nodes:
-                    print "(" + str(node.data) + ", " + str(node.heuristic) + ")",
-                print "|",
-                print
-                for node in nodes:
-                    self.printChildren(node.children)
-                for node in nodes:
-                    self.printTree(node.children)
-                    
-    
-    def printChildren(self, nodes):
-        print "|",
-        for node in nodes:
-            print "(" + str(node.data) + ", " + str(node.heuristic) + ")",
-        print "|",        
-
+        
+    def printTree(self, root):
+        thislevel = [root]
+        while thislevel:
+            nextlevel = list()
+            #rint "|",
+            for node in thislevel:
+                print "(" + str(node.data) + ", " + str(node.heuristic) + ")",
+                
+                for child in node.children:
+                    if child: nextlevel.append(child)
+                #print "|",
+            print
+            thislevel = nextlevel
 
 
 if __name__ == "__main__":
     T = Tree("S", 11)
-    T.insert(T.root, [T.addNode("A", 8), T.addNode("B", 9), T.addNode("C", 10)])
+    T.insert(T.root, [T.addNode("A", 10), T.addNode("B", 9), T.addNode("C", 8)])
     T.insert(T.root, [T.addNode("D", 7), T.addNode("E", 6), T.addNode("F", 5)])
     T.insert(T.root, [T.addNode("G", 4), T.addNode("H", 3), T.addNode("I", 2)])
-    T.insert(T.root, [T.addNode("J", 4), T.addNode("K", 3), T.addNode("L", 2)])
-    T.insert(T.root, [T.addNode("M", 4), T.addNode("N", 3), T.addNode("0", 2)])
+    T.insert(T.root, [T.addNode("J", 1), T.addNode("K", 0), T.addNode("L", 1)])
+    T.insert(T.root, [T.addNode("M", 2), T.addNode("N", 3), T.addNode("0", 4)])
+    T.insert(T.root, [T.addNode("P", 10), T.addNode("Q", 9), T.addNode("R", 8)])
+    T.insert(T.root, [T.addNode("S", 7), T.addNode("T", 6), T.addNode("U", 5)])
+    T.insert(T.root, [T.addNode("V", 4), T.addNode("W", 3), T.addNode("X", 2)])
+    T.insert(T.root, [T.addNode("Y", 1), T.addNode("Z", 0)]) 
     T.printTree(T.root)
+    
