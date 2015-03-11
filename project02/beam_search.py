@@ -11,21 +11,21 @@ class BeamSearch:
         node = self.root
         self.openlist.append(node)
         
-        while node.h != 0:
+        while node.heuristic != 0:
             self.openlist.remove(node)
             if len(node.children) > 0:
                 if (len(self.openlist) + len(node.children)) > memorySize:
                     for i in node.children:
-                        if i.h < openlist[len(openlist)]:
+                        if i.heuristic < self.openlist[len(self.openlist)]:
                             for j in self.openlist:
-                                if i.h < j.h:
+                                if i.heuristic < j.heuristic:
                                     self.openlist.pop()
                                     self.openlist.append(i)
                                     break
                 else:
-                    for i in children:
+                    for i in node.children:
                         self.openlist.append(i)
-            node = openlist[0]
+            node = self.openlist[0]
             
         self.optPath(node)
         

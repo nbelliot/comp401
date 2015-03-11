@@ -17,21 +17,23 @@ class Tree:
         return Node(data, heuristic)
 
     
-    def generate (self, total, branches):
-        count = 0
-        self.root = self.addNode("S", random.randint(0,9))
+    def generate (self, depth, bredth):
+        self.root = self.addNode("S", random.randint(depth-1,depth+1))
         thislevel = [self.root]
-        count += 1
-        while count < total:
+        level = 1
+        while level <= depth:
             nextlevel = list()
+            num = 0
             for node in thislevel:
                 nodes = list()
-                for i in range(0, branches):
-                    temp = self.addNode(chr(ord("A") + (count -1)) + ver, random.randint(0,9))
+                char = chr(ord("A") + (level -1))
+                for i in range(0, bredth):
+                    temp = self.addNode(char + str(num), abs(random.randint(depth-level-1,depth-level+1)))
                     nextlevel.append(temp)
                     nodes.append(temp)
-                    count += 1
+                    num += 1
                 self.set_relatives(node, nodes)
+            level += 1
             thislevel = nextlevel     
     
     
@@ -72,6 +74,6 @@ class Tree:
 
 if __name__ == "__main__":
     T = Tree()
-    T.generate(26,3)
+    T.generate(5,3)
     T.printTree()
     
