@@ -21,7 +21,10 @@ class BeamSearch:
                             for item in self.openlist:
                                 if child.heuristic < item.heuristic:
                                     self.openlist.pop()
-                                    self.openlist.insert(self.openlist.index(item), child)
+                                    if item in self.openlist:
+                                        self.openlist.insert(self.openlist.index(item), child)
+                                    else:
+                                        self.openlist.append(child)
                                     break
                 else:
                     for child in node.children:
