@@ -1,0 +1,4 @@
+-http://en.wikipedia.org/wiki/Beam_search
+-http://en.wikibooks.org/wiki/Artificial_Intelligence/Search/Heuristic_search/Beam_search
+-http://en.wikipedia.org/wiki/Breadth-first_search
+-http://en.wikipedia.org/wiki/Quicksort
