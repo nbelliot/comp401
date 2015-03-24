@@ -10,6 +10,9 @@ Thank you.
 
 -Nick
 
+Video:
+- https://www.youtube.com/watch?v=G_teUutyC3Y
+
 Reading:
 - http://en.wikipedia.org/wiki/Beam_search
 - http://en.wikibooks.org/wiki/Artificial_Intelligence/Search/Heuristic_search/Beam_search
