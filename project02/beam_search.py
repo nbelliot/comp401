@@ -12,10 +12,10 @@ class BeamSearch:
         node = self.root
         self.openlist.append(node)
         
-        while node.heuristic != 0:
+        while node.heuristic != 0 or self.openlist == []:
             self.openlist.remove(node)
             if node.children != None:
-                if (len(self.openlist) + len(node.children)) > memorySize:
+                if (len(self.openlist) + len(node.children)) > self.k:
                     for child in node.children:
                         if child.heuristic < self.openlist[-1].heuristic:
                             for item in self.openlist:
@@ -29,10 +29,14 @@ class BeamSearch:
                 else:
                     for child in node.children:
                         self.openlist.append(child)
-            nodeSort(self.openlist)
-            node = self.openlist[0]
-            
-        return self.optPath(node)
+            if self.openlist != []:
+                nodeSort(self.openlist)
+                node = self.openlist[0]
+        
+        if node.heuristic == 0:
+            return self.optPath(node)
+        else:
+            return self.path
     
         
         
@@ -43,6 +47,9 @@ class BeamSearch:
             
     
     def printPath(self):
-        for i in self.path:
-            print "(" + str(i.data) + ", " + str(i.heuristic) + ")",
+        if self.path == []:
+            print "Path not found."
+        else:
+            for i in self.path:
+                print "(" + str(i.data) + ", " + str(i.heuristic) + ")",
         
