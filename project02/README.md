@@ -3,7 +3,7 @@
 ![beam_search](https://github.com/nbelliot/comp401/blob/master/presentation2/beam_search.jpg)
 
 ###### Explanation:
-A rope is a tree-like data structure that is meant to store a large string.  When a large string is stored in a rope, the string is divided into smaller “fragment” strings and are stored at the lowest branches of the tree.  Storing a large string in this way makes storage and manipulation more efficient.
+**Beam search** is a search algorithm based off of heuristic.  In a graph, the most promising nodes (with the best heuristic) are expanded.  Beam search is an optimization of Best-first search, reducing the memory requirements.  Best-first orders all partial solutions (states) by heuristic.  In beam search, the number of best partial solutions is limited by a predetermined quantity.  Limiting the number of explored solutions increases the memory efficiency but sacrifices completeness (guarantee of solution) and optimality (guarantee of best solution).
 
 ###### References:
 - http://en.wikipedia.org/wiki/Beam_search
@@ -18,3 +18,6 @@ A rope is a tree-like data structure that is meant to store a large string.  Whe
 - `tree.py` contains tree helper class for `beam_search.py`; implementation of tree with depth d and bredth b - no need to see or manipulate.
 
 ###### Complexity Analysis:
+Performance | Space
+--------- | ----
+O($k^d$) | O(k)
