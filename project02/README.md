@@ -3,7 +3,7 @@
 ![beam_search](https://github.com/nbelliot/comp401/blob/master/presentation2/beam_search.jpg)
 
 ###### Explanation:
-**Beam search** is a search algorithm based off of heuristic.  In a graph, the most promising nodes (with the best heuristic) are expanded.  Beam search is an optimization of Best-first search, reducing the memory requirements.  Best-first orders all partial solutions (states) by heuristic.  In beam search, the number of best partial solutions is limited by a predetermined quantity.  Limiting the number of explored solutions increases the memory efficiency but sacrifices completeness (guarantee of solution) and optimality (guarantee of best solution).
+**Beam search** is a search algorithm based off of heuristic where, in a graph, the most promising nodes (with the best heuristic) are expanded.  Beam search is an optimization of best-first search, reducing memory requirements.  Best-first orders all partial solutions (states) by heuristic.  In beam search, the number of best partial solutions is limited by a predetermined quantity (k).  Limiting the number of explored solutions increases memory efficiency but sacrifices completeness (guarantee of solution) and optimality (guarantee of best solution).
 
 ###### References:
 - http://en.wikipedia.org/wiki/Beam_search
@@ -21,3 +21,4 @@
 Performance | Space
 --------- | ----
 O($k^d$) | O(k)
+k - memory size, d - depth
