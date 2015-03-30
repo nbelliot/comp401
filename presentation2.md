@@ -16,6 +16,7 @@ This a graph.  **S** is the starting point; **G** is the goal.  The numbers betw
 
 ![openlist](https://github.com/nbelliot/comp401/blob/master/presentation2/openlist.jpg)
 Walk through the grap using the beamsearch algorithm.  Assume memory size is 2 (k=2).  The first two steps have been done for you as example (notice how node C was pruned for you).
+
 Is the path found using beam search the *optimal path* (least amout of total cost)?  What is the optimal path?
 
 Additional Reading:
