@@ -1,4 +1,4 @@
-# Presentation 2
+# Presentation 2 - Beam Search (algorithm)
 ![beam_search](https://github.com/nbelliot/comp401/blob/master/presentation2/beam_search.jpg)
 
 ###### Explanation:
