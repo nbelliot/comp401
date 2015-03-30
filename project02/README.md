@@ -20,5 +20,5 @@
 ###### Complexity Analysis:
 Performance | Space
 --------- | ----
-O($k^d$) | O(k)
+O(k^d) | O(k)
 k - memory size, d - depth
