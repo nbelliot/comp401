@@ -11,8 +11,9 @@ Watch this cool video for good explenation on general concept of beam search: ht
 This is the algorithm in pseudocode for beam search.
 
 ###### Pathfinding:
-![pathfinding](https://github.com/nbelliot/comp401/blob/master/presentation2/pathfinding.jpg)
-This a graph.  **S** is the starting point; **G** is the goal.  The numbers between the edges represent *cost* (actual distance between nodes); the numbers inside the nodes represent *heuristic* (straightline distance from node to goal)
+![pathfinding](https://github.com/nbelliot/comp401/blob/master/presentation2/pathfinding.jpg)<br /> 
+This a graph.  **S** is the starting point; **G** is the goal.  The numbers between the edges represent *cost* (actual distance between nodes); the numbers inside the nodes represent *heuristic* (straightline distance from node to goal).
+
 ![openlist](https://github.com/nbelliot/comp401/blob/master/presentation2/openlist.jpg)
 Walk through the grap using the beamsearch algorithm.  Assume memory size is 2 (k=2).  The first two steps have been done for you as example (notice how node C was pruned for you).
 
