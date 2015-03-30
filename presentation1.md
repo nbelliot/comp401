@@ -1,4 +1,4 @@
-# Presentation 1
+# Presentation 1 - Rope (data structure)
 Do the required reading to complete the provided exercises which will be walked through in class on Thursday.
 
 Thank you.
