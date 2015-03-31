@@ -15,11 +15,11 @@ This is the algorithm in pseudocode for beam search.
 This a graph.  **S** is the starting point; **G** is the goal.  The numbers between the edges represent *cost* (actual distance between nodes); the numbers inside the nodes represent *heuristic* (straightline distance from node to goal).
 
 ![openlist](https://github.com/nbelliot/comp401/blob/master/presentation2/openlist.jpg)
-Walk through the grap using the beamsearch algorithm.  Assume memory size is 2 (k=2).  The first two steps have been done for you as example (notice how node C was pruned for you).
+Walk through the graph using the beamsearch algorithm.  Assume memory size is 2 (k=2).  The first two steps have been done for you as examples (notice how node C was pruned for you).
 
-Is the path found using beam search the *optimal path* (least amout of total cost)?  What is the optimal path?
+Is the path found using beam search the *optimal path* (least amout of total cost)?  If not, What is the optimal path?
 
-Additional Reading:
+Additional Readings:
 - http://en.wikipedia.org/wiki/Beam_search
 - http://en.wikibooks.org/wiki/Artificial_Intelligence/Search/Heuristic_search/Beam_search
 - http://en.wikipedia.org/wiki/Breadth-first_search
