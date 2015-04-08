@@ -4,7 +4,7 @@ from node_sort import *
 class BeamSearch:
     def __init__(self, problemSet, memorySize):
         self.tree = problemSet
-        self.root = problemSet.root
+        self.root = self.tree.root
         self.k = memorySize
         self.openlist = []
         self.path = []
