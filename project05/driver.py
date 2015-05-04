@@ -10,8 +10,8 @@ hminScale = [0, 2, 3, 5, 7, 8, 11]
 beats = [16, 8, 4, 2]
 octave = [0]
 
-tonic = Bb - 12
-key = 'G'
+tonic = C
+key = 'C'
 mode = hminScale
 meter = (4, 4)
 tempo = 150
