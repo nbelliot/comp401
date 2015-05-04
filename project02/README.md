@@ -12,10 +12,10 @@
 - http://en.wikipedia.org/wiki/Quicksort
 
 ###### Documentation:
-- Run `driver.py` edit and run to generate a tree with depth (d) and bredth (b) and search generated tree using Beam Search algorithm to find "shortest" path.
+- Run `driver.py` edit and run to generate a tree with depth (*d*) and bredth (*b*) and search generated tree using Beam Search algorithm to find "shortest" path.
 - `beam_search.py` contains Beam Search class - see for methods and comments.
 - `node_sort.py` conains helper function for `beam_search.py`; implementation of quicksort on array of nodes, sorting by heuristics of nodes - no need to see or manipulate.
-- `tree.py` contains tree helper class for `beam_search.py`; implementation of tree with depth d and bredth b - no need to see or manipulate.
+- `tree.py` contains tree helper class for `beam_search.py`; implementation of tree with depth (*d*) and bredth (*b*) - no need to see or manipulate.
 
 ###### Complexity Analysis:
 Performance | Space
