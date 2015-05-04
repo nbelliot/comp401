@@ -40,8 +40,8 @@ class AStar:
     
     
     def fN(self, new, old):
-        g = self.gN(new, old)
-        h = new.h
+        g = abs(new.g - old.g)
+        h = abs(new.h - old.h)
         new.f = g + h
         return new.f
     
