@@ -11,9 +11,9 @@ Similarly, using a 3rd party music package, “mingus,” built in sheet music n
 - Run `driver.py` edit and run to generate a tree with depth (*d*) and bredth (*b*), search generated tree using A* algorithm to find optimal path (melody), generate melody as a MIDI file, and generate medlody as pdf file.
 - `music_notator.py` contains music_notator class - extracts *g* and *h* values from nodes and notates corresponding notes on staff paper, exported as pdf.
 - `music_generator.py` contains music_generator class - extracts *g* and *h* values from nodes and exports MIDI file with corresponding notes.
-- `a_star1` contains AStar class - searches problem set (tree) for optimal path using function *f(n) = g(n) + h(n)*.
-- `node_sort.py` conains helper function for `a_star.py`; implementation of quicksort on array of nodes, sorting by heuristics of nodes - no need to see or manipulate.
-- `tree.py` contains tree helper class for `beam_search.py`; implementation of tree with depth (*d*) and bredth (*b*) - no need to see or manipulate.
+- `a_star` contains AStar class - searches problem set (tree) for optimal path using function *f(n) = g(n) + h(n)*.
+- `node_sort.py` conains helper function for `a_star.py` - implementation of quicksort on array of nodes, sorting by heuristics of nodes - no need to see or manipulate.
+- `tree.py` contains tree class - implementation of tree with depth (*d*) and bredth (*b*) - no need to see or manipulate.
 
 ###### References:
 Must have the following packages installed to run:
