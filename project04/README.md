@@ -7,5 +7,5 @@
 - `midi_emulator.py` wich contains MidiEmulator class - edit mode (single notes, harminazor, arpeggiator, or chord) and run to begin simulation.
 
 ###### References:
-Must have the following packages installed to run:
+Must have the following package installed to run:
 - http://pygame.org/download.shtml
