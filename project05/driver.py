@@ -26,6 +26,6 @@ if __name__ == "__main__":
         for j in ASearch.path:
             melody.append(j)
     print
-    music_generator(melody, tempo)
+    MusicGenerator(melody, tempo)
     print
-    music_notator(melody, key, meter)
+    MusicNotator(melody, key, meter)

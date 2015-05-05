@@ -3,7 +3,7 @@ from midiutil.MidiGenerator import MidiGenerator
 from midiutil.TrackGen import LoopingArray
 import itertools
 
-class music_generator:
+class MusicGenerator:
     def __init__(self, melody, tempo):
         self.melody = melody
         midiGenerator = MidiGenerator(tempo=tempo)

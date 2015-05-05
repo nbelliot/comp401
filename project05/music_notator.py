@@ -6,7 +6,7 @@ from mingus.containers.Track import Track
 from mingus.containers.Composition import Composition
 from mingus.extra.LilyPond import *
 
-class music_notator:
+class MusicNotator:
     def __init__(self, melody, key='C', meter=(4,4)):
         self.melody = melody
 
