@@ -20,7 +20,6 @@ class music_notator:
         for note in self.melody:
             n = Note()
             n.from_int(note.g)
-            print n
             if b.current_beat + 1.0/note.h < b.length:
                 b.place_notes(n, note.h)
             elif b.current_beat == b.length:

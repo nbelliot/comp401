@@ -12,6 +12,7 @@ class MidiEmulator:
 
         self.duration = 0.5
         self.major=[0,4,7,12]
+        self.minor=[0,3,7,12]
 
     def get(self, data):
         return data[0][0]
